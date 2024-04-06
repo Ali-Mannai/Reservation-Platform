@@ -1,0 +1,109 @@
+<div class="row" style="margin-left: 30px;">
+    <div class="col-md-5 col-sm-12">
+        <div id="serv_hover" class="room card mb-4">
+            <img src="assets/images/maison0.gif" class="card-img-top" alt="#">
+            <div class="card-body">
+                <h3 class="card-title">New GuestHouse</h3>
+                <ul class="list-unstyled">
+                    <li><strong>Address:</strong>...</li>
+                    <li><strong>Description:</strong>...</li>
+                    <li><strong>City:</strong>...$</li>
+                    <li><strong>Number of rooms:</strong>...</li>
+                </ul>
+            </div>
+        </div>
+      </div>
+
+    <div class=" col-md-6 col-sm-12" style="margin-right: 30px; margin-top: 60px;">
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-lg-7">
+              <form [formGroup]="addGuestHouseForm" class="text-center">
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="name" placeholder="Name">
+                </div>
+                <div *ngIf="
+                  addGuestHouseForm.controls['name'].invalid &&
+                  (addGuestHouseForm.controls['name'].dirty ||
+                  addGuestHouseForm.controls['name'].touched)
+                    ">
+                    <div *ngIf="addGuestHouseForm.controls['name']?.errors?.['required']">
+                      Name is required
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="address" placeholder="Address">
+                </div>
+                <div *ngIf="
+                    addGuestHouseForm.controls['address'].invalid &&
+                    (addGuestHouseForm.controls['address'].dirty ||
+                    addGuestHouseForm.controls['address'].touched)
+                        ">
+                        <div *ngIf="addGuestHouseForm.controls['address']?.errors?.['required']">
+                          Name is required
+                        </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="description" placeholder="Description">
+                </div>
+                <div *ngIf="
+                    addGuestHouseForm.controls['description'].invalid &&
+                    (addGuestHouseForm.controls['description'].dirty ||
+                    addGuestHouseForm.controls['description'].touched)
+                        ">
+                        <div *ngIf="addGuestHouseForm.controls['description']?.errors?.['required']">
+                          Name is required
+                        </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="city" placeholder="City">
+                </div>
+                <div *ngIf="
+                    addGuestHouseForm.controls['city'].invalid &&
+                    (addGuestHouseForm.controls['city'].dirty ||
+                    addGuestHouseForm.controls['city'].touched)
+                        ">
+                        <div *ngIf="addGuestHouseForm.controls['city']?.errors?.['required']">
+                          Name is required
+                        </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="number" class="form-control" formControlName="nbRooms" placeholder="Number of rooms">
+                </div>
+                <div *ngIf="
+                    addGuestHouseForm.controls['nbRooms'].invalid &&
+                    (addGuestHouseForm.controls['nbRooms'].dirty ||
+                    addGuestHouseForm.controls['nbRooms'].touched)
+                        ">
+                        <div *ngIf="addGuestHouseForm.controls['nbRooms']?.errors?.['required']">
+                          Name is required
+                        </div>
+                </div>
+                <br>
+
+                <div class="form-group form-control">
+                  <input type="file" id="image" (change)="onFileSelected($event)" placeholder="image" title="upload the image of the guestHouse here">
+                </div>
+                <div *ngIf="
+                    addGuestHouseForm.controls['image'].invalid &&
+                    (addGuestHouseForm.controls['image'].dirty ||
+                    addGuestHouseForm.controls['image'].touched)
+                        ">
+                        <div *ngIf="addGuestHouseForm.controls['image']?.errors?.['required']">
+                          Image is required
+                        </div>
+                </div>
+                <div class="form-group">
+                  <input type="submit" (click)="addGuestHouse()" [disabled]="addGuestHouseForm.invalid" class="btn btn-danger py-3 px-5" value="Add Room">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</div>

@@ -1,0 +1,22 @@
+<!-- all-houses.component.html -->
+<div class="center">
+    <div class="row">
+      <div class="col-md-4 col-sm-6" *ngFor="let house of houses">
+        <a [routerLink]="'/rooms/' + house.id">
+            <div id="serv_hover" class="room card mb-4">
+                <img [src]="house.imageUrl" class="card-img-top" alt="#">
+                <div class="card-body">
+                    <h3 class="card-title">{{ house.name }}</h3>
+                    <ul class="list-unstyled">
+                        <li><strong>Address: </strong>{{ house.address }}</li>
+                        <li><strong>Description: </strong>{{ house.description }}</li>
+                        <li><strong>City: </strong>{{ house.city }}</li>
+                        <li><strong>Number of rooms: </strong>{{ house.nbRooms }} rooms</li>
+                    </ul>
+                </div>
+            </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  

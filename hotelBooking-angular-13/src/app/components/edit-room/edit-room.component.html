@@ -1,0 +1,95 @@
+<div class="row editComp" >
+  <div class="col-md-5 col-sm-12">
+      <div id="serv_hover" class="room card mb-4">
+          <img [src]="imageUrlBase + roomData.image" class="card-img-top" alt="#">
+          <div class="card-body">
+              <h3 class="card-title">{{roomData.name}}</h3>
+              <ul class="list-unstyled">
+                  <li><strong>Capacity: </strong>{{this.roomData.capacity}}</li>
+                  <li><strong>Description: </strong>{{this.roomData.description}}</li>
+                  <li><strong>Price: </strong> {{this.roomData.price}} dt</li>
+              </ul>
+          </div>
+      </div>
+  </div>
+
+  <div class=" col-md-6 col-sm-12 editForm" >
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-7">
+            <form [formGroup]="editRoomForm" class="text-center">
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="name" placeholder="Name">
+              </div>
+              <div *ngIf="
+                editRoomForm.controls['name'].invalid &&
+                (editRoomForm.controls['name'].dirty ||
+                editRoomForm.controls['name'].touched)
+                  ">
+                <div *ngIf="editRoomForm.controls['name']?.errors?.['required']">
+                  Name is required
+                </div>
+              </div>
+              <br>
+              <div class="form-group">
+                <input type="number" class="form-control" formControlName="capacity" placeholder="Capacity">
+              </div>
+              <div *ngIf="
+                  editRoomForm.controls['capacity'].invalid &&
+                  (editRoomForm.controls['capacity'].dirty ||
+                  editRoomForm.controls['capacity'].touched)
+                      ">
+                  <div *ngIf="editRoomForm.controls['capacity']?.errors?.['required']">
+                      Capacity is required
+                  </div>
+              </div>
+              <br>
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="description" placeholder="Description">
+              </div>
+              <div *ngIf="
+                  editRoomForm.controls['description'].invalid &&
+                  (editRoomForm.controls['description'].dirty ||
+                  editRoomForm.controls['description'].touched)
+                      ">
+                  <div *ngIf="editRoomForm.controls['description']?.errors?.['required']">
+                      Description is required
+                  </div>
+              </div>
+              <br>
+              <div class="form-group">
+                <input type="number" class="form-control" formControlName="price" placeholder="Price">
+              </div>
+              <div *ngIf="
+                  editRoomForm.controls['price'].invalid &&
+                  (editRoomForm.controls['price'].dirty ||
+                  editRoomForm.controls['price'].touched)
+                      ">
+                  <div *ngIf="editRoomForm.controls['price']?.errors?.['required']">
+                      Price is required
+                  </div>
+              </div>
+              <br>
+              <div class="form-group form-control">
+                <input type="file" id="image" (change)="onFileSelected($event)" placeholder="image" title="upload the image of the room here">
+              </div>
+              <div *ngIf="
+                  editRoomForm.controls['image'].invalid &&
+                  (editRoomForm.controls['image'].dirty ||
+                  editRoomForm.controls['image'].touched)
+                      ">
+                  <div *ngIf="editRoomForm.controls['image']?.errors?.['required']">
+                      The image of the room is required
+                  </div>
+              </div>
+              <br>
+              <div class="form-group">
+                <input type="submit" (click)="editRoom()" [disabled]="editRoomForm.invalid" class="btn btn-danger py-3 px-5" value="Edit Room">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</div>

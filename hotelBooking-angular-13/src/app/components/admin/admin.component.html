@@ -1,0 +1,145 @@
+<div class="back_re">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12">
+             <div class="title">
+                    <h2>dashboard</h2>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <br>
+ <div>
+    <button title="Add" class="cssbuttons-io-button margin-right-bottom center-horizontal1" (click)="goToAddHotel()">
+        <svg height="25" width="25" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"></path></svg>
+        <span>Add Hotel</span>
+        </button>
+        
+        <button title="Add" class="cssbuttons-io-button margin-right-bottom center-horizontal1" (click)="goToAddGuestHouse()">
+            <svg height="25" width="25" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"></path></svg>
+            <span>Add Guest House</span>
+        </button>
+ </div>
+
+ <br>
+<div class="center">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let inn of inns">
+            <div id="serv_hover" class="room card mb-4" (click)="selectInn(inn)">
+                <div (click)="goToRooms()">
+                    <img [src]="imageUrlBase + inn.image" class="card-img-top" alt="#">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ inn.name }}</h3>
+                        <ul class="list-unstyled">
+                            <li><strong>Address: </strong>{{ inn.address }}</li>
+                            <li><strong>Description: </strong>{{ inn.description }}</li>
+                            <li><strong>City: </strong>{{ inn.city }}</li>
+                            <li><strong>Number of rooms: </strong>{{ inn.nbRooms }} rooms</li>
+                            <li><strong>Type: </strong>{{ inn.type }}</li>
+                        </ul>
+                    </div>
+                </div>
+            <div class="card-body">
+                <input type="button" class="btn margin-right btn-info" value="Edit" (click)="editInn(inn)" >
+                <input type="button" class="btn btn-danger"value="Delete" (click)="confirmDelete(inn)">
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+  
+<!-- <table class="table table-hover">
+    <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>nbRooms</th>
+        <th>actions</th>
+    </tr>
+    <tr>
+        <td>--</td>
+        <td>--</td>
+        <td>--</td>
+        <td>
+            <button class="btn btn-primary margin" (click)="goToAddHotel()">Add Hotel</button>
+            <button class="btn btn-primary margin" (click)="goToAddGuestHouse()">Add Guest House</button>
+        </td>
+    </tr>
+
+    <tr *ngFor="let hotel of hotelsTab">
+        <td>{{hotel.id}}</td>
+        <td>{{hotel.name}}</td>
+        <td>{{hotel.nbRooms}}</td>
+        <td>
+            <button class="btn btn-success margin" (click)="goToAddRoom(hotel.id)">Add Room</button>
+            <button class="btn btn-info margin" (click)="goToDisplay(hotel.id)">Display</button>
+            <button class="btn btn-warning margin" (click)="goToEditHotel(hotel.id)">Edit</button>
+            <button class="btn btn-danger margin" (click)="deleteHotel(hotel.id)">Delete</button>
+            
+        </td>
+    </tr>
+</table> -->
+
+<!-- <button class="btn btn-primary margin" (click)="goToAddHotel()">Add Hotel</button>
+<button class="btn btn-primary margin" (click)="goToAddGuestHouse()">Add Guest House</button> -->
+
+
+<!-- Customer Feedback -->
+<!-- <div class="col-lg-4 col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h5>Customer Feedback</h5>
+        </div> -->
+        <!-- <div class="card-block">
+            <span class="d-block text-c-blue f-24 f-w-600 text-center" 
+                [ngStyle]="{'font-size': feedbackNumberSize + 'px'}">
+                {{feedbackNumber}}
+            </span>
+
+            <div class="col-auto b-r-default m-t-5 m-b-5"
+                [ngClass]="{'text-success': positivePercentage >= 50, 'text-danger': positivePercentage < 50}">
+                <h4>{{positivePercentage}}%</h4>
+                <p class="m-b-0"><i class="ti-hand-point-up m-r-5"></i>Positive</p>
+            </div>
+
+            <div class="col-auto m-t-5 m-b-5"
+                [ngClass]="{'text-danger': negativePercentage > 50, 'text-success': negativePercentage <= 50}">
+                <h4>{{negativePercentage}}%</h4>
+                <p class="m-b-0"><i class="ti-hand-point-down m-r-5"></i>Negative</p>
+            </div> -->
+
+            <!-- Dans votre composant Angular, vous pouvez définir des variables pour les pourcentages et le nombre de feedbacks
+        <div class="col-lg-4 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Customer Feedback</h5>
+                    </div>
+                    <div class="card-block">
+                        Utilisation de ngStyle pour les pourcentages variables
+                        <span class="d-block text-c-blue f-24 f-w-600 text-center">{{ positivePercentage + negativePercentage }}%</span>
+                        Utilisation de ngStyle pour le nombre variable de feedbacks
+                        <canvas id="feedback-chart" height="100" [ngStyle]="{ 'width.%': feedbackCount }"></canvas>
+                        <div class="row justify-content-center m-t-15">
+                            Utilisation de ngClass pour afficher dynamiquement les classes de couleur en fonction des pourcentages
+                            <div class="col-auto b-r-default m-t-5 m-b-5" [ngClass]="{ 'text-success': positivePercentage > negativePercentage, 'text-danger': negativePercentage > positivePercentage }">
+                                <h4>{{ positivePercentage }}%</h4>
+                                <p class="text-success m-b-0"><i class="ti-hand-point-up m-r-5"></i>Positive</p>
+                            </div>
+                            <div class="col-auto m-t-5 m-b-5" [ngClass]="{ 'text-success': negativePercentage > positivePercentage, 'text-danger': positivePercentage > negativePercentage }">
+                                <h4>{{ negativePercentage }}%</h4>
+                                <p class="text-danger m-b-0"><i class="ti-hand-point-down m-r-5"></i>Negative</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+</div>
+ -->
+
+
+

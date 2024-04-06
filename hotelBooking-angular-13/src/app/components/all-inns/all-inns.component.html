@@ -1,0 +1,48 @@
+<!-- <div class="back_re">
+  <div class="container">
+     <div class="row">
+        <div class="col-md-12">
+           <div class="title">
+                  <h2>Welcome User ! </h2>
+           </div>
+        </div>
+     </div>
+  </div>
+</div> -->
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="search-bar-container">
+        <input type="text" [(ngModel)]="searchTerm" (input)="searchTermChanged()" placeholder="Search by name or address" class="form-control">
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="InputContainer search-bar-container">
+  <input type="text" [(ngModel)]="searchTerm" (input)="searchTermChanged()" placeholder="Search by name or address" class="input">
+</div>
+
+
+<br>
+<div class="center">
+    <div class="row">
+      <div class="col-md-4 col-sm-6" *ngFor="let inn of inns">
+            <div id="serv_hover" class="room card mb-4" (click)="goToRoomsClient(inn)">
+              <div (click)="selectInn(inn)">
+                <img [src]="imageUrlBase + inn.image" class="card-img-top" alt="#">
+                <div class="card-body">
+                    <h3 class="card-title">{{ inn.name }}</h3>
+                    <ul class="list-unstyled">
+                        <li><strong>Address: </strong>{{ inn.address }}</li>
+                        <li><strong>Description: </strong>{{ inn.description }}</li>
+                        <li><strong>City: </strong>{{ inn.city }}</li>
+                        <li><strong>Number of rooms: </strong>{{ inn.nbRooms }} rooms</li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+      </div>
+    </div>
+  </div>
+  

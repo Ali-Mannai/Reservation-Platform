@@ -1,0 +1,110 @@
+<br>
+<div class="row addComp">
+    <div class="col-md-5 col-sm-12">
+        <div id="serv_hover" class="room card mb-4">
+            <img src="assets/images/hotel0.gif" class="card-img-top" alt="#">
+            <div class="card-body">
+                <h3 class="card-title">New Hotel</h3>
+                <ul class="list-unstyled">
+                    <li><strong>Address:</strong>..?</li>
+                    <li><strong>Description:</strong>..?</li>
+                    <li><strong>City:</strong>..?</li>
+                    <li><strong>Number of rooms:</strong>..?</li>
+                </ul>
+            </div>
+        </div>
+      </div>
+
+    <div class=" col-md-6 col-sm-12 addForm" >
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-lg-7">
+              <form [formGroup]="addHotelForm" class="text-center">
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="name" placeholder="Name">
+                </div>
+                <div *ngIf="
+                  addHotelForm.controls['name'].invalid &&
+                  (addHotelForm.controls['name'].dirty ||
+                  addHotelForm.controls['name'].touched)
+                    ">
+                  <div *ngIf="addHotelForm.controls['name']?.errors?.['required']">
+                    Name is required
+                  </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="address" placeholder="Address">
+                </div>
+                <div *ngIf="
+                    addHotelForm.controls['address'].invalid &&
+                    (addHotelForm.controls['address'].dirty ||
+                    addHotelForm.controls['address'].touched)
+                        ">
+                    <div *ngIf="addHotelForm.controls['address']?.errors?.['required']">
+                        Address is required
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="description" placeholder="Description">
+                </div>
+                <div *ngIf="
+                    addHotelForm.controls['description'].invalid &&
+                    (addHotelForm.controls['description'].dirty ||
+                    addHotelForm.controls['description'].touched)
+                        ">
+                    <div *ngIf="addHotelForm.controls['description']?.errors?.['required']">
+                        Description is required
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="city" placeholder="City">
+                </div>
+                <div *ngIf="
+                    addHotelForm.controls['city'].invalid &&
+                    (addHotelForm.controls['city'].dirty ||
+                    addHotelForm.controls['city'].touched)
+                        ">
+                    <div *ngIf="addHotelForm.controls['city']?.errors?.['required']">
+                        City is required
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="number" class="form-control" formControlName="nbRooms" placeholder="Number of rooms">
+                </div>
+                <div *ngIf="
+                    addHotelForm.controls['nbRooms'].invalid &&
+                    (addHotelForm.controls['nbRooms'].dirty ||
+                    addHotelForm.controls['nbRooms'].touched)
+                        ">
+                    <div *ngIf="addHotelForm.controls['nbRooms']?.errors?.['required']">
+                        number of rooms is required
+                    </div>
+                </div>
+                <br>
+                <div class="form-group form-control">
+                  <input type="file" id="image" (change)="onFileSelected($event)" placeholder="image" title="upload the image of the hotel here">
+                </div>
+                <!-- <div *ngIf="
+                    addHotelForm.controls['image'].invalid &&
+                    (addHotelForm.controls['image'].dirty ||
+                    addHotelForm.controls['image'].touched)
+                        ">
+                    <div *ngIf="addHotelForm.controls['image']?.errors?.['required']">
+                        The image of the hotel is required
+                    </div>
+                </div> -->
+                <br>
+                <div class="form-group">
+                  <input type="submit" (click)="addHotel()" [disabled]="addHotelForm.invalid" class="btn btn-danger py-3 px-5" value="Add Room" enctype="multipart/form-data">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</div>

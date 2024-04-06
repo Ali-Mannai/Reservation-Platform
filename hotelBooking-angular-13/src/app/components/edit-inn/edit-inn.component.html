@@ -1,0 +1,125 @@
+<br>
+<div class="row addComp">
+    <div class="col-md-5 col-sm-12">
+        <div id="serv_hover" class="room card mb-4">
+            <img [src]="imageUrlBase + innData.image" class="card-img-top" alt="#">
+            <div class="card-body">
+                <h3 class="card-title">{{innData.name}}</h3>
+                <table class="table">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Address:</th>
+                        <td>{{ innData.address }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Description:</th>
+                        <td>{{ innData.description }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">City:</th>
+                        <td>{{ innData.city }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Nb rooms:</th>
+                        <td>{{ innData.nbRooms }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+            </div>
+        </div>
+    </div>
+
+    <div class=" col-md-6 col-sm-12 addForm" >
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-lg-7">
+              <form [formGroup]="editInnForm" class="text-center">
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="name" placeholder="Name">
+                </div>
+                <div *ngIf="
+                  editInnForm.controls['name'].invalid &&
+                  (editInnForm.controls['name'].dirty ||
+                  editInnForm.controls['name'].touched)
+                    ">
+                  <div *ngIf="editInnForm.controls['name']?.errors?.['required']">
+                    Name is required
+                  </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="address" placeholder="Address">
+                </div>
+                <div *ngIf="
+                    editInnForm.controls['address'].invalid &&
+                    (editInnForm.controls['address'].dirty ||
+                    editInnForm.controls['address'].touched)
+                        ">
+                    <div *ngIf="editInnForm.controls['address']?.errors?.['required']">
+                        Address is required
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="description" placeholder="Description">
+                </div>
+                <div *ngIf="
+                    editInnForm.controls['description'].invalid &&
+                    (editInnForm.controls['description'].dirty ||
+                    editInnForm.controls['description'].touched)
+                        ">
+                    <div *ngIf="editInnForm.controls['description']?.errors?.['required']">
+                        Description is required
+                    </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="text" class="form-control" formControlName="city" placeholder="City">
+                </div>
+                <div *ngIf="
+                    editInnForm.controls['city'].invalid &&
+                    (editInnForm.controls['city'].dirty ||
+                    editInnForm.controls['city'].touched)
+                        ">
+                    <div *ngIf="editInnForm.controls['city']?.errors?.['required']">
+                        City is required
+                    </div>
+                </div>
+                <!-- <br>
+                <div class="form-group">
+                  <input type="number" class="form-control" formControlName="nbRooms" placeholder="Number of rooms">
+                </div>
+                <div *ngIf="
+                    editInnForm.controls['nbRooms'].invalid &&
+                    (editInnForm.controls['nbRooms'].dirty ||
+                    editInnForm.controls['nbRooms'].touched)
+                        ">
+                    <div *ngIf="editInnForm.controls['nbRooms']?.errors?.['required']">
+                        number of rooms is required
+                    </div>
+                </div> -->
+                <br>
+                <div class="form-group form-control">
+                  <input type="file" id="image" (change)="onFileSelected($event)" placeholder="image" title="upload the image of the Inn here">
+                </div>
+                <!-- <div *ngIf="
+                    editInnForm.controls['image'].invalid &&
+                    (editInnForm.controls['image'].dirty ||
+                    editInnForm.controls['image'].touched)
+                        ">
+                    <div *ngIf="editInnForm.controls['image']?.errors?.['required']">
+                        Image is required
+                    </div>
+                </div> -->
+                <br>
+                <div class="form-group">
+                  <input type="submit" (click)="editInn()" [disabled]="editInnForm.invalid" class="btn btn-danger py-3 px-5" value="Edit Room" enctype="multipart/form-data">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</div>

@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "2717:27017"
+    volumes:
+      - mongodb_data:/data/db   # Créer un volume pour stocker les données MongoDB
+      
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    environment:
+      flouci-secret-me: 121fb852-5f18-435d-bc2c-15be0b9bb72a
+      flouci: 9ea59db2-722c-4420-bcf3-17db39a8855c
+      JWT_SECRET_KEY: b9d666b311e78daaeda1416a864a337a7a7c6d6de0df6df33318bc8ba401e01c46be2a447bba35cd7a614c89a60ce3e15ecda6a7e4d2b45fe70c4be0194d49a5
+      DB_URL : mongodb://mongo:27017/hotelDB
+
+
+  frontend:
+    build:
+      context: ./hotelBooking-angular-13
+      dockerfile: Dockerfile
+    ports:
+      - "4200:80"
+
+volumes:
+  mongodb_data:  # Définition du volume pour MongoDB

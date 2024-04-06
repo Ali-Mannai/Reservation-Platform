@@ -1,0 +1,53 @@
+<div >
+  <div class="row">
+    <div class="col-md-12">
+      <div class="back_re">
+        <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="title">
+                    <h2>Rooms of <span class="blue">{{ innName }}</span></h2>
+                    <button title="Add" class="cssbuttons-io-button margin-right-bottom center-horizontal1" (click)="AddRoom()">
+                      <svg height="25" width="25" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"></path><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z" fill="currentColor"></path></svg>
+                      <span>Add Room</span>
+                    </button>
+                  </div>
+                  <div>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <br>
+
+
+      <div class="row" *ngIf="rooms && rooms.length > 0">
+        <div class="col-md-4" *ngFor="let room of rooms">
+          <div class="card mb-4">
+            <img [src]="imageUrlBase + room.image" class="card-img-top" alt="#">
+            <div class="card-body">
+              <h3 class="card-title">{{ room.name }}</h3>
+              <ul class="list-unstyled">
+                <li><strong>Capacity:</strong> {{ room.capacity }}</li>
+                <li><strong>Description:</strong> {{ room.description }}</li>
+                <li><strong>Price:</strong> {{ room.price }}dt</li>
+                <li><strong>Status:</strong> {{ room.status }}</li>
+              </ul>
+              <br>
+              <input type="button" class="btn margin-right btn-info margin-right" value="Edit" (click)="editRoom(room._id)" >
+              <input type="button" class="btn btn-danger margin-right"value="Delete" (click)="confirmDelete(room._id)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!rooms || rooms.length === 0">
+  <div class="row">
+    <div class="col text-center">
+      <div class="animation">This {{innType}} doesn't have any rooms yet.</div>
+    </div>
+  </div>
+</div>

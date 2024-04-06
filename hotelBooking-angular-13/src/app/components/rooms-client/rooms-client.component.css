@@ -1,0 +1,136 @@
+.btn {
+    width: 180px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.5s ease-in-out;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    background: #0088ff;
+    color: #f5f5f5;
+    padding-right: 50%;
+  }
+  
+  .btn:hover {
+    box-shadow: 0 0 20px 0px #2e2e2e3a;
+  }
+  
+  .btn .icon {
+    position: absolute;
+    height: 40px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+  }
+  
+  .btn .text {
+    transform: translateX(55px);
+  }
+  
+  .btn:hover .icon {
+    width: 175px;
+  }
+  
+  .btn:hover .text {
+    transition: all 0.5s;
+    opacity: 0;
+  }
+  
+  .btn:focus {
+    outline: none;
+  }
+  
+  .btn:active .icon {
+    transform: scale(0.85);
+  }
+
+
+
+
+
+
+
+  
+  .blue{
+    color: blue;
+}
+
+
+@keyframes typing {
+    from {
+      width: 0;
+    }
+  }
+  
+  @keyframes blink-caret {
+    50% {
+      border-color: transparent;
+    }
+  }
+  /* When you change the amount of characters in the h1, you have to change 
+  the with: 14ch and  steps(14, end), if there is 14 characters, put 14, 
+  if there is 20 put 20 */
+  .animation {
+    font: bold 200% Consolas, Monaco, monospace;
+    border-right: .1em solid black;
+    width: 43ch;
+    margin: 2em 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-animation: typing 3s steps(43, end),
+                 blink-caret .5s step-end infinite alternate;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+  
+
+
+  /* bouton add room */
+  .cssbuttons-io-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .2em;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 16px;
+    padding: .5em 1.5em;
+    color: white;
+    background: linear-gradient(0deg, rgb(0, 150, 60), rgb(100, 250, 150));
+    border: none;
+    outline: none;
+    border-bottom: 3px solid rgb(0, 130, 40);
+    box-shadow: 0 .5em .5em -.4em rgb(0, 0, 0, .5);
+    letter-spacing: 0.08em;
+    border-radius: 20em;
+    cursor: pointer;
+    transition: .5s;
+  }
+  
+  .cssbuttons-io-button:hover {
+    filter: brightness(1.2);
+    color: rgb(0, 0, 0, .5);
+  }
+  
+  .cssbuttons-io-button:active {
+    transition: 0s;
+    transform: rotate(-10deg);
+  }
+
+
+
+
+
+  .center-horizontal1 {
+    margin-left: auto;
+    margin-right: auto;
+    display: block; /* Assurez-vous que l'élément est affiché en tant que bloc pour utiliser les marges automatiques */
+  }
+  

@@ -1,0 +1,78 @@
+<div class="row" style="margin-left: 30px;">
+    <div class="col-md-5 col-sm-12">
+        <div id="serv_hover" class="room card mb-4">
+            <img src="assets/images/maison0.gif" class="card-img-top" alt="#">
+            <div class="card-body">
+                <h3 class="card-title">New House</h3>
+                <ul class="list-unstyled">
+                    <li><strong>Address:</strong>...</li>
+                    <li><strong>Description:</strong>...</li>
+                    <li><strong>City:</strong>...$</li>
+                    <li><strong>Number of rooms:</strong>...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12" style="margin-right: 30px; margin-top: 60px;">
+        <div class="container">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-lg-7">
+              <!-- <form class="text-center" (ngSubmit)="editHouse()" #editHouseForm="ngForm">
+                <div class="form-group">
+                  <input type="text" class="form-control" [(ngModel)]="house.name" name="name" placeholder="Name" required>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="text" class="form-control" [(ngModel)]="house.address" name="address" placeholder="Address" required>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="text" class="form-control" [(ngModel)]="house.description" name="description" placeholder="Description" required>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="text" class="form-control" [(ngModel)]="house.city" name="city" placeholder="City" required>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="number" class="form-control" [(ngModel)]="house.nbRooms" name="nbRooms" placeholder="Number of rooms" required>
+                </div>
+                <br>
+                <div class="form-group">
+                  <input type="submit" [disabled]="!editHouseForm.valid" class="btn btn-danger py-3 px-5" value="Edit Room">
+                </div>
+              </form> -->
+              <form [formGroup]="editHouseForm" (ngSubmit)="editHouse()">
+                <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input type="text" class="form-control" formControlName="name" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                  <label for="address">Address:</label>
+                  <input type="text" class="form-control" formControlName="address" placeholder="Address"  required>
+                </div>
+                <div class="form-group">
+                  <label for="description">Description:</label>
+                  <input type="text" class="form-control" formControlName="description" placeholder="Description" required>
+                </div>
+                <div class="form-group">
+                  <label for="city">City:</label>
+                  <input type="text" class="form-control" formControlName="city" placeholder="City" required>
+                </div>
+                <div class="form-group">
+                  <label for="nbRooms">Number of Rooms:</label>
+                  <input type="number" class="form-control" formControlName="nbRooms" placeholder="Number of rooms" required>
+                </div>
+                <div class="form-group">
+                  <button type="submit" [disabled]="!editHouseForm.valid" class="btn btn-danger py-3 px-5">Edit Room</button>
+                </div>
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+</div>

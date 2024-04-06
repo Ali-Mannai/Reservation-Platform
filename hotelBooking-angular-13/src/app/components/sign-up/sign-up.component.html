@@ -1,0 +1,95 @@
+<div class="back_re">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-12">
+             <div class="title">
+                <h2>Sign up</h2>
+             </div>
+          </div>
+       </div>
+    </div>
+  </div>
+  <br>
+  <div class="site-section">
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-7">
+            <form [formGroup]="signupForm" class="text-center">
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+              </div>
+              <div *ngIf="
+                signupForm.controls['firstName'].invalid &&
+                (signupForm.controls['firstName'].dirty ||
+                signupForm.controls['firstName'].touched)
+                  ">
+                <div *ngIf="signupForm.controls['firstName']?.errors?.['required']">
+                  First name is required
+                </div>
+                <div *ngIf="signupForm.controls['firstName']?.errors?.['minlength']">
+                  First name must have at least 3 characters
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name">
+              </div>
+              <div *ngIf="
+                  signupForm.controls['lastName'].invalid &&
+                  (signupForm.controls['lastName'].dirty ||
+                  signupForm.controls['lastName'].touched)
+                      ">
+                  <div *ngIf="signupForm.controls['lastName']?.errors?.['required']">
+                      Last name is required
+                  </div>
+                  <div *ngIf="signupForm.controls['lastName']?.errors?.['minlength']">
+                      Last name must have at least 3 characters
+                  </div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" formControlName="email" placeholder="Email">
+              </div>
+              <div *ngIf="
+                  signupForm.controls['email'].invalid &&
+                  (signupForm.controls['email'].dirty ||
+                  signupForm.controls['email'].touched)
+                      ">
+                  <div *ngIf="signupForm.controls['email']?.errors?.['required']">
+                      email is required
+                  </div>
+                  <div *ngIf="signupForm.controls['email']?.errors?.['email']">
+                      Please enter a valid email address
+                  </div>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" formControlName="pwd" placeholder="Password">
+              </div>
+              <div *ngIf="
+                  signupForm.controls['pwd'].invalid &&
+                  (signupForm.controls['pwd'].dirty ||
+                  signupForm.controls['pwd'].touched)
+                      ">
+                  <div *ngIf="signupForm.controls['pwd']?.errors?.['required']">
+                      password is required
+                  </div>
+                  <div *ngIf="signupForm.controls['pwd']?.errors?.['minlength'] || signupForm.controls['pwd']?.errors?.['maxlength']">
+                      Password must be between 8 and 20 characters
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="role">Role:</label>
+                <select class="form-control" formControlName="role" id="role">
+                  <option value="user">User</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <input type="submit" (click)="signup()" [disabled]="signupForm.invalid" class="btn btn-danger py-3 px-5" value="Sign Up">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    

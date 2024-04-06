@@ -1,0 +1,19 @@
+.app-container {
+    position: relative;
+  }
+  
+  .header-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Assurez-vous que le header reste au-dessus du contenu */
+  }
+  
+  .content-container {
+    margin-top: 85px; /* Ajustez cette valeur selon la hauteur de votre header */
+  }
+  
+  /* .footer-container {
+  } */
+  
