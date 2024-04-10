@@ -7,10 +7,10 @@ dist/
 hotelBooking-angular-13/dist/
 hotelBooking-angular-13/node_modules/
 hotelBooking-angular-13/.vscode/
-hotelBooking-angular-13/.dockerignore
+# hotelBooking-angular-13/.dockerignore
 
 # Exclusions spécifiques au backend
 backend/.env
 backend/node_modules/
 backend/.vscode/
-backend/.dockerignore
+# backend/.dockerignore

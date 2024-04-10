@@ -1,0 +1,68 @@
+pipeline {
+    agent any
+    
+    environment {
+        DOCKER_IMAGE_BACKEND = 'hotel-booking-backend:latest'
+        DOCKER_IMAGE_FRONTEND = 'hotel-booking-frontend:latest'
+    }
+    
+    stages {
+        stage('Build Backend') {
+            steps {
+                script {
+                    docker.build(DOCKER_IMAGE_BACKEND, './backend')
+                }
+            }
+        }
+        
+        stage('Build Frontend') {
+            steps {
+                script {
+                    docker.build(DOCKER_IMAGE_FRONTEND, './hotelBooking-angular-13')
+                }
+            }
+        }
+        
+        stage('Test Backend') {
+            steps {
+                script {
+                    docker.image(DOCKER_IMAGE_BACKEND).run('--rm npm test')
+                }
+            }
+        }
+        
+        stage('Test Frontend') {
+            steps {
+                script {
+                    docker.image(DOCKER_IMAGE_FRONTEND).run('--rm npm test')
+                }
+            }
+        }
+        
+        stage('Push Images to Docker Registry') {
+            steps {
+                script {
+                    docker.withRegistry('https://your-docker-registry.com', 'docker-credentials-id') {
+                        docker.image(DOCKER_IMAGE_BACKEND).push()
+                        docker.image(DOCKER_IMAGE_FRONTEND).push()
+                    }
+                }
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                sh 'docker-compose up -d'
+            }
+        }
+    }
+    
+    post {
+        always {
+            script {
+                docker.image(DOCKER_IMAGE_BACKEND).remove()
+                docker.image(DOCKER_IMAGE_FRONTEND).remove()
+            }
+        }
+    }
+}
