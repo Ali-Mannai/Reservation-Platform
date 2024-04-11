@@ -5,7 +5,7 @@ services:
   mongo:
     image: mongo:latest
     ports:
-      - "2717:27017"
+      - "27017:27017"
     volumes:
       - mongodb_data:/data/db   # Créer un volume pour stocker les données MongoDB
       
