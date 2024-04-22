@@ -1,53 +1,21 @@
 pipeline {
     agent any
     
+    environment {
+        DOCKER_IMAGE_BACKEND = 'alimannai/monpfa-backend:first'
+        DOCKER_IMAGE_FRONTEND = 'alimannai/monpfa-frontend:first'
+        DOCKER_REGISTRY_CREDENTIALS = 'docker-credentials-id'
+        KUBE_CONFIG = credentials('kube-config-id')
+    }
+    
     stages {
         stage('Build Backend') {
             steps {
                 echo 'Building backend Docker image...'
+                script {
+                    bat 'docker build -t $DOCKER_IMAGE_BACKEND .\\backend'
+                }
             }
         }
         
-        stage('Build Frontend') {
-            steps {
-                echo 'Building frontend Docker image...'
-            }
-        }
-        
-        stage('Test Backend') {
-            steps {
-                echo 'Testing backend...'
-            }
-        }
-        
-        stage('Test Frontend') {
-            steps {
-                echo 'Testing frontend...'
-            }
-        }
-        
-        stage('Push Images to Docker Registry') {
-            steps {
-                echo 'Pushing images to Docker Registry...'
-            }
-        }
-        
-        stage('Deploy to Minikube') {
-            steps {
-                echo 'Deploying to Minikube...'
-            }
-        }
-        
-        stage('Test on Minikube') {
-            steps {
-                echo 'Testing on Minikube...'
-            }
-        }
-    }
-    
-    post {
-        always {
-            echo 'Cleaning up Minikube...'
-        }
-    }
 }
