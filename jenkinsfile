@@ -39,17 +39,18 @@ pipeline {
             }
         }
         
-        stage('Push Images to Docker Registry') {
+         stage('Push Images to Docker Registry') {
             steps {
                 echo 'Pushing images to Docker Registry...'
                 script {
-                    docker.withRegistry('https://hub.docker.com', dckr_pat_JFLXkLUKle3sK9giooPGWKHS2DA) {
-                        docker.image(alimannai/monpfa-backend:first).push()
-                        docker.image(alimannai/monpfa-frontend:first).push()
+                    docker.withRegistry('https://hub.docker.com', 'dckr_pat_JFLXkLUKle3sK9giooPGWKHS2DA') {
+                        docker.image('alimannai/monpfa-backend:first').push()
+                        docker.image('alimannai/monpfa-frontend:first').push()
                     }
                 }
             }
         }
+
 
 
     }
