@@ -1,12 +1,6 @@
 pipeline {
     agent any
-    
-    environment {
-        DOCKER_IMAGE_BACKEND = 'alimannai/monpfa-backend:first'
-        DOCKER_IMAGE_FRONTEND = 'alimannai/monpfa-frontend:first'
-        DOCKER_REGISTRY_CREDENTIALS = 'docker-credentials-id'
-        KUBE_CONFIG = credentials('kube-config-id')
-    }
+
     
     stages {
         stage('Build Backend') {
