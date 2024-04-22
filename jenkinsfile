@@ -1,17 +1,13 @@
 pipeline {
     agent any
     
-    environment {
-        DOCKER_IMAGE_BACKEND = 'alimannai/monpfa-backend:first'
-        DOCKER_IMAGE_FRONTEND = 'alimannai/monpfa-frontend:first'
-    }
     
     stages {
         stage('Build Backend') {
             steps {
                 echo 'Building backend Docker image...'
                 script {
-                    bat 'docker build -t ${DOCKER_IMAGE_BACKEND} .\\backend'
+                    bat 'docker build -t alimannai/monpfa-backend:first .\\backend'
                 }
             }
         }
