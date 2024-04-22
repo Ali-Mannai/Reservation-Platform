@@ -1,6 +1,12 @@
 pipeline {
     agent any
     
+    environment {
+        DOCKER_IMAGE_BACKEND = 'alimannai/monpfa-backend:first'
+        DOCKER_IMAGE_FRONTEND = 'alimannai/monpfa-frontend:first'
+        DOCKER_REGISTRY_CREDENTIALS = 'docker-credentials-id'
+        KUBE_CONFIG = credentials('kube-config-id')
+    }
     
     stages {
         stage('Build Backend') {
@@ -11,5 +17,59 @@ pipeline {
                 }
             }
         }
-      }  
+        
+        stage('Build Frontend') {
+            steps {
+                echo 'Building frontend Docker image...'
+                script {
+                    bat 'docker build -t alimannai/monpfa-frontend:first .\\hotelBooking-angular-13'
+                }
+            }
+        }
+        
+        stage('Test Backend') {
+            steps {
+                echo 'Testing backend...'
+                script {
+                    bat 'docker run --rm alimannai/monpfa-backend:first npm test'
+                }
+            }
+        }
+        
+        stage('Test Frontend') {
+            steps {
+                echo 'Testing frontend...'
+                script {
+                    bat 'docker run --rm alimannai/monpfa-frontend:first npm test'
+                }
+            }
+        }
+        
+        stage('Push Images to Docker Registry') {
+            steps {
+                echo 'Pushing images to Docker Registry...'
+                script {
+                    docker.withRegistry('https://hub.docker.com', dckr_pat_JFLXkLUKle3sK9giooPGWKHS2DA) {
+                        docker.image(alimannai/monpfa-backend:first).push()
+                        docker.image(alimannai/monpfa-frontend:first).push()
+                    }
+                }
+            }
+        }
+
+
+    }
+    
+    post {
+        success {
+            echo 'Pipeline executed successfully!'
+        }
+        always {
+            echo 'Cleaning up Minikube...'
+            script {
+                bat 'minikube stop'
+                bat 'minikube delete'
+            }
+        }
+    }
 }
