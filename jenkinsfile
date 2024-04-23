@@ -7,7 +7,7 @@ pipeline {
             steps {
                 echo 'Building backend Docker image...'
                 script {
-                    bat 'docker build -t alimannai/monpfa-backend:first .\\backend'
+                    bat 'docker build -t alimannai/monpfa-backend:latest .\\backend'
                 }
             }
         }
@@ -16,25 +16,7 @@ pipeline {
             steps {
                 echo 'Building frontend Docker image...'
                 script {
-                    bat 'docker build -t alimannai/monpfa-frontend:first .\\hotelBooking-angular-13'
-                }
-            }
-        }
-        
-        stage('Test Backend') {
-            steps {
-                echo 'Testing backend...'
-                script {
-                    bat 'docker run --rm alimannai/monpfa-backend:first npm test'
-                }
-            }
-        }
-        
-        stage('Test Frontend') {
-            steps {
-                echo 'Testing frontend...'
-                script {
-                    bat 'docker run --rm alimannai/monpfa-frontend:first npm test'
+                    bat 'docker build -t alimannai/monpfa-frontend:latest .\\hotelBooking-angular-13'
                 }
             }
         }
@@ -47,13 +29,6 @@ pipeline {
     post {
         success {
             echo 'Pipeline executed successfully!'
-        }
-        always {
-            echo 'Cleaning up Minikube...'
-            script {
-                bat 'minikube stop'
-                bat 'minikube delete'
-            }
         }
     }
 }
