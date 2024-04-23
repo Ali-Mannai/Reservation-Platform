@@ -18,6 +18,8 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
+
+    - name: Change the repository to the backend
       run: |
         cd backend
 
