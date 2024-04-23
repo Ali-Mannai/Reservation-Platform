@@ -12,7 +12,6 @@ pipeline {
                 script {
                     // Run docker-compose up --build using bat
                     docker-compose -f docker-compose.yml build                
-}
             }
         }
         
