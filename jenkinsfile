@@ -7,19 +7,11 @@ pipeline {
             steps {
                 echo 'Building backend Docker image...'
                 script {
-                    bat 'docker build -t alimannai/monpfa-backend:latest .\\backend'
+                    bat 'docker build -t alimannai/monpfa-backend:first .\\backend'
                 }
             }
         }
         
-        stage('Build Frontend') {
-            steps {
-                echo 'Building frontend Docker image...'
-                script {
-                    bat 'docker build -t alimannai/monpfa-frontend:latest .\\hotelBooking-angular-13'
-                }
-            }
-        }
         
 
 
