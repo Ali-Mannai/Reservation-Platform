@@ -1,13 +1,15 @@
 pipeline {
     agent any
 
-    
+    environment {
+    DOCKER_REGISTRY_CREDENTIALS = 'dckr_pat_JFLXkLUKle3sK9giooPGWKHS2DA'
+}
     stages {
         stage('Build Backend') {
             steps {
                 echo 'Building backend Docker image...'
                 script {
-                    bat 'docker build -t alimannai/monpfa-backend:first .\\backend'
+                    bat 'docker build -t alimannai/monpfa-backend:latest .\\backend'
                 }
             }
         }
@@ -16,7 +18,7 @@ pipeline {
             steps {
                 echo 'Building frontend Docker image...'
                 script {
-                    bat 'docker build -t alimannai/monpfa-frontend:first .\\hotelBooking-angular-13'
+                    bat 'docker build -t alimannai/monpfa-frontend:latest .\\hotelBooking-angular-13'
                 }
             }
         }
@@ -25,7 +27,7 @@ pipeline {
             steps {
                 echo 'Testing backend...'
                 script {
-                    bat 'docker run --rm alimannai/monpfa-backend:first npm test'
+                    bat 'docker run --rm alimannai/monpfa-backend:latest npm test'
                 }
             }
         }
@@ -34,7 +36,7 @@ pipeline {
             steps {
                 echo 'Testing frontend...'
                 script {
-                    bat 'docker run --rm alimannai/monpfa-frontend:first npm test'
+                    bat 'docker run --rm alimannai/monpfa-frontend:latest npm test'
                 }
             }
         }
@@ -43,9 +45,9 @@ pipeline {
             steps {
                 echo 'Pushing images to Docker Registry...'
                 script {
-                    docker.withRegistry('https://hub.docker.com', 'dckr_pat_JFLXkLUKle3sK9giooPGWKHS2DA') {
-                        docker.image('alimannai/monpfa-backend:first').push()
-                        docker.image('alimannai/monpfa-frontend:first').push()
+                    docker.withRegistry('https://hub.docker.com', DOCKER_REGISTRY_CREDENTIALS) {
+                        docker.image('alimannai/monpfa-backend:latest').push()
+                        docker.image('alimannai/monpfa-frontend:latest').push()
                     }
                 }
             }
@@ -59,12 +61,6 @@ pipeline {
         success {
             echo 'Pipeline executed successfully!'
         }
-        always {
-            echo 'Cleaning up Minikube...'
-            script {
-                bat 'minikube stop'
-                bat 'minikube delete'
-            }
-        }
+
     }
 }
