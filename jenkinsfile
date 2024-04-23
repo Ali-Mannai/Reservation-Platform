@@ -11,23 +11,24 @@ pipeline {
                 echo 'Building and starting with Docker Compose...'
                 script {
                     // Run docker-compose up --build using bat
-                    docker-compose -f docker-compose.yml build                
+                    bat 'docker-compose -f docker-compose.yml build'
+                }
             }
         }
         
-        // Add other stages for testing and pushing images if needed
+        // Ajoutez d'autres étapes pour les tests et le push des images si nécessaire
         
     }
     
     post {
         success {
-            echo 'Pipeline executed successfully!'
+            echo 'Pipeline exécuté avec succès!'
         }
         failure {
-            echo 'Pipeline failed!'
+            echo 'Pipeline a échoué!'
         }
         always {
-            echo 'Cleaning up...'
+            echo 'Nettoyage...'
             script {
                 bat 'docker-compose down'
             }
