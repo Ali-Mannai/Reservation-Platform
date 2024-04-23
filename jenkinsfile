@@ -2,65 +2,36 @@ pipeline {
     agent any
 
     environment {
-    DOCKER_REGISTRY_CREDENTIALS = 'dckr_pat_JFLXkLUKle3sK9giooPGWKHS2DA'
-}
+        DOCKER_REGISTRY_CREDENTIALS = 'dckr_pat_JFLXkLUKle3sK9giooPGWKHS2DA'
+    }
+    
     stages {
-        stage('Build Backend') {
+        stage('Build and Start with Docker Compose') {
             steps {
-                echo 'Building backend Docker image...'
+                echo 'Building and starting with Docker Compose...'
                 script {
-                    bat 'docker build -t alimannai/monpfa-backend:latest .\\backend'
+                    // Run docker-compose up --build using bat
+                    bat 'docker-compose up --build -d'
                 }
             }
         }
         
-        stage('Build Frontend') {
-            steps {
-                echo 'Building frontend Docker image...'
-                script {
-                    bat 'docker build -t alimannai/monpfa-frontend:latest .\\hotelBooking-angular-13'
-                }
-            }
-        }
+        // Add other stages for testing and pushing images if needed
         
-        stage('Test Backend') {
-            steps {
-                echo 'Testing backend...'
-                script {
-                    bat 'docker run --rm alimannai/monpfa-backend:latest npm test'
-                }
-            }
-        }
-        
-        stage('Test Frontend') {
-            steps {
-                echo 'Testing frontend...'
-                script {
-                    bat 'docker run --rm alimannai/monpfa-frontend:latest npm test'
-                }
-            }
-        }
-        
-         stage('Push Images to Docker Registry') {
-            steps {
-                echo 'Pushing images to Docker Registry...'
-                script {
-                    docker.withRegistry('https://hub.docker.com', DOCKER_REGISTRY_CREDENTIALS) {
-                        docker.image('alimannai/monpfa-backend:latest').push()
-                        docker.image('alimannai/monpfa-frontend:latest').push()
-                    }
-                }
-            }
-        }
-
-
-
     }
     
     post {
         success {
             echo 'Pipeline executed successfully!'
         }
-
+        failure {
+            echo 'Pipeline failed!'
+        }
+        always {
+            echo 'Cleaning up...'
+            script {
+                bat 'docker-compose down'
+            }
+        }
     }
 }
