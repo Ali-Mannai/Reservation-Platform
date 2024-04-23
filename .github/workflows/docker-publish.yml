@@ -17,12 +17,10 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
+      run: |
+        cd backend
 
-    - name: Set working directory (optional)
-      if: ${{ ! contains(github.ref, 'heads/main') }}  # Skip for main branch
-      uses: actions/checkout@v3
-      with:
-        path: my-docker-folder
+
 
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v4
