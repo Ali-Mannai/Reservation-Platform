@@ -1,36 +1,58 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_REGISTRY_CREDENTIALS = 'dckr_pat_JFLXkLUKle3sK9giooPGWKHS2DA'
-    }
     
     stages {
-        stage('Build and Start with Docker Compose') {
+        stage('Build Backend') {
             steps {
-                echo 'Building and starting with Docker Compose...'
+                echo 'Building backend Docker image...'
                 script {
-                    // Run docker-compose up --build using bat
-                    bat 'docker-compose -f docker-compose.yml build'
+                    bat 'docker build -t alimannai/monpfa-backend:first .\\backend'
                 }
             }
         }
         
-        // Ajoutez d'autres étapes pour les tests et le push des images si nécessaire
+        stage('Build Frontend') {
+            steps {
+                echo 'Building frontend Docker image...'
+                script {
+                    bat 'docker build -t alimannai/monpfa-frontend:first .\\hotelBooking-angular-13'
+                }
+            }
+        }
         
+        stage('Test Backend') {
+            steps {
+                echo 'Testing backend...'
+                script {
+                    bat 'docker run --rm alimannai/monpfa-backend:first npm test'
+                }
+            }
+        }
+        
+        stage('Test Frontend') {
+            steps {
+                echo 'Testing frontend...'
+                script {
+                    bat 'docker run --rm alimannai/monpfa-frontend:first npm test'
+                }
+            }
+        }
+        
+
+
+
     }
     
     post {
         success {
-            echo 'Pipeline exécuté avec succès!'
-        }
-        failure {
-            echo 'Pipeline a échoué!'
+            echo 'Pipeline executed successfully!'
         }
         always {
-            echo 'Nettoyage...'
+            echo 'Cleaning up Minikube...'
             script {
-                bat 'docker-compose down'
+                bat 'minikube stop'
+                bat 'minikube delete'
             }
         }
     }
