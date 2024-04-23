@@ -8,6 +8,7 @@ const app = express();
 const path = require('path'); // Importer le module path
 
 
+
 // Configuration de la session
 // app.use(session({
 //   secret: process.env.SESSION_SECRET || 'default_secret_key',
