@@ -10,5 +10,6 @@ router.get('/session', (req, res) => {
         res.send('Bienvenue sur cette page pour la première fois !');
     }
 });
+console.log('session');
 
 module.exports = router;
