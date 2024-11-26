@@ -168,4 +168,4 @@ bash git clone https://github.com/Ali-Mannai/Reservation-Platform.git cd online-
 
 Voici une capture d'écran de l'application :
 
-![Aperçu de l'application](homepage.png)
+![Aperçu de l'application](https://github.com/Ali-Mannai/Reservation-Platform/blob/main/home%20page.png)
