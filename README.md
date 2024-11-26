@@ -82,7 +82,8 @@ Voici une capture d'écran de l'application :
 ### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/yourusername/online-booking-platform.git
-cd online-booking-platform 
+cd online-booking-platform
+
 2️⃣ **Backend Setup**
 Navigate to the backend folder:
 
@@ -92,12 +93,13 @@ Install dependencies:
 npm install
 Configure environment variables in .env:
 
-PORT=5000
+PORT=3000
 MONGO_URI=mongodb://<your_mongo_db_connection_string>
 JWT_SECRET=<your_secret_key>
 FLOUCI_API_KEY=<your_flouci_api_key>
 Start the backend server:
 npm start
+
 3️⃣ **Frontend Setup**
 Navigate to the frontend folder:
 
@@ -144,6 +146,7 @@ Room
   "image": "String",
   "status": "String" // "disponible", "réservée", "occupée"
 }
+
 🌟 **Features Under Development**
 Email Notifications: Notify users for booking confirmation.
 Admin Analytics: Insights into bookings and revenue.
@@ -155,6 +158,7 @@ Contributions are welcome! Please submit a pull request or open an issue for sug
 Developer: Ali Mannai
 Email: alimannai106@gmail.com
 LinkedIn: https://www.linkedin.com/in/ali-mannai
+
 📝 **License**
 This project is licensed under the MIT License. See the LICENSE file for details.
 
