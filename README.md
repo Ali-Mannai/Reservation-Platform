@@ -50,12 +50,25 @@
 
 ## 📂 Project Structure
 
-### **Backend:**
-backend/ │ ├── models/ # Mongoose schemas (User, Hotel, GuestHouse, Booking, Room, etc.) ├── routes/ # API routes for users, admins, hotels, etc. ├── server.js # Entry point for the backend server └── Dockerfile # Docker configuration for backend
+### **Backend**
 
-### **Frontend:**
-hotelBooking-angular-13/ │ ├── src/ │ ├── app/ # Main application folder │ │ ├── components/ # UI components (home, hotels, rooms, etc.) │ │ ├── services/ # Angular services for API communication │ │ └── app.module.ts # Root Angular module ├── angular.json # Angular configuration └── Dockerfile # Docker configuration for frontend
+- **backend/**  
+  - `models/` : Contient les schémas Mongoose (User, Hotel, GuestHouse, Booking, Room, etc.)  
+  - `routes/` : Routes API pour les utilisateurs, administrateurs, hôtels, etc.  
+  - `server.js` : Point d'entrée pour le serveur backend  
+  - `Dockerfile` : Configuration Docker pour le backend  
 
+### **Frontend**
+
+- **hotelBooking-angular-13/**  
+  - `src/` : Répertoire principal des fichiers sources Angular  
+    - `app/` : Contient l'application principale  
+      - `components/` : Composants UI (home, hotels, rooms, etc.)  
+      - `services/` : Services Angular pour la communication avec l'API  
+      - `app.module.ts` : Module principal d'Angular  
+    - `assets/` : Contient les ressources statiques comme les images  
+  - `angular.json` : Configuration d'Angular  
+  - `Dockerfile` : Configuration Docker pour le frontend  
 
 ---
 
@@ -64,7 +77,7 @@ hotelBooking-angular-13/ │ ├── src/ │ ├── app/ # Main applicatio
 ### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/yourusername/online-booking-platform.git
-cd online-booking-platform 
+cd online-booking-platform ```
 2️⃣ Backend Setup
 Navigate to the backend folder:
 
