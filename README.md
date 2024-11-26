@@ -77,8 +77,8 @@
 ### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/yourusername/online-booking-platform.git
-cd online-booking-platform ```
-2️⃣ Backend Setup
+cd online-booking-platform 
+2️⃣ **Backend Setup**
 Navigate to the backend folder:
 
 cd backend
@@ -93,7 +93,7 @@ JWT_SECRET=<your_secret_key>
 FLOUCI_API_KEY=<your_flouci_api_key>
 Start the backend server:
 npm start
-3️⃣ Frontend Setup
+3️⃣ **Frontend Setup**
 Navigate to the frontend folder:
 
 cd hotelBooking-angular-13
@@ -106,7 +106,8 @@ ng serve
 Open the application in your browser:
 
 http://localhost:4200
-📊 Database Models
+
+📊 **Database Models**
 User
 
 {
@@ -138,29 +139,33 @@ Room
   "image": "String",
   "status": "String" // "disponible", "réservée", "occupée"
 }
-🌟 Features Under Development
+🌟 **Features Under Development**
 Email Notifications: Notify users for booking confirmation.
 Admin Analytics: Insights into bookings and revenue.
-📸 Screenshots
-Home Page	Dashboard
-🤝 Contribution
+
+🤝 **Contribution**
 Contributions are welcome! Please submit a pull request or open an issue for suggestions.
 
-📧 Contact
+📧 **Contact**
 Developer: Ali Mannai
 Email: alimannai106@gmail.com
-LinkedIn: https://alimannai.netlify.app
-📝 License
+LinkedIn: https://www.linkedin.com/in/ali-mannai
+📝 **License**
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 
 
-### Steps to Use:
+### **Steps to Use:**
 1. Paste the above markdown content into your `README.md` file.
 2. Replace:
    - `yourusername` with your GitHub username.
    - `path/to/home.jpg` and `path/to/dash.jpg` with the actual paths to your project screenshots (if any).
    - Add any missing or relevant project-specific details.
 
-\`\`\`bash git clone https://github.com/Ali-Mannai/Reservation-Platform.git cd online-booking-platform
+bash git clone https://github.com/Ali-Mannai/Reservation-Platform.git cd online-booking-platform
 
+# **Mon Application**
+
+Voici une capture d'écran de l'application :
+
+![Aperçu de l'application](homepage.png)
