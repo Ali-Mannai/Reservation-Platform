@@ -71,6 +71,11 @@
   - `Dockerfile` : Configuration Docker pour le frontend  
 
 ---
+# **Mon Application**
+
+Voici une capture d'écran de l'application :
+
+![Aperçu de l'application](home%20page.png)
 
 ## 🚀 Quick Start
 
@@ -163,9 +168,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
    - Add any missing or relevant project-specific details.
 
 bash git clone https://github.com/Ali-Mannai/Reservation-Platform.git cd online-booking-platform
-
-# **Mon Application**
-
-Voici une capture d'écran de l'application :
-
-![Aperçu de l'application](home%20page.png)
