@@ -71,9 +71,9 @@
   - `Dockerfile` : Configuration Docker pour le frontend  
 
 ---
-# **Mon Application**
+# **My Application**
 
-Voici une capture d'écran de l'application :
+Here is a screenshot of the home page:
 
 ![Aperçu de l'application](home%20page.png)
 
